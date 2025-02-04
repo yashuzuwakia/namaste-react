@@ -13,6 +13,24 @@ const jsxHeading = (
   </h1>
 );
 
+const Title = () => {
+  return <h1>I am the title of this app.</h1>;
+};
+
+function NormalFunction() {
+  return <h1>I am normal Function</h1>;
+}
+//React Functional Component
+const HeadingComponent = () => {
+  return (
+    <div>
+      <Title />
+      <NormalFunction />
+      {jsxHeading}
+      <h1 className="heading">Namaste React Functional Component!! 🚀</h1>
+    </div>
+  );
+};
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(jsxHeading);
+root.render(<HeadingComponent />);
