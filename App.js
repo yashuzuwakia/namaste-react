@@ -1,17 +1,18 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "I am h1 tag"),
-    React.createElement("h2", {}, "I am h2 tag"),
-  ])
+//Code written by using pure React
+const heading = React.createElement("h1", { id: "heading" }, "I am React App");
+
+// JSX is HTML like or XML Like syntax
+// written by useing JSX
+//JSX is tranpiled before it reaches to JS by - Parcel - It is actully done by Babel
+const jsxHeading = (
+  <h1 id="heading" tabIndex="5">
+    This is React using JSX
+  </h1>
 );
 
-
-
-
-const heading = React.createElement("h1", {id:"heading"}, "Hello React");
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(parent);
+root.render(jsxHeading);
