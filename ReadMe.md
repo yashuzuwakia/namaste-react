@@ -1,10 +1,11 @@
 ...
+
 # Namaste React
 
-
-
 ...
+
 # Parcel
+
 - Dev Build
 - Local Server
 - HMR = Hot Module Replacement
@@ -21,3 +22,29 @@
 - HTTPs Server
 - Tree Shaking - remove unused code
 - Different Build for Dev and Prod
+
+# Namaste Food App
+
+- Header
+- -Logo
+- -Nav
+- Body
+- -Restraunt Container
+- -Restraunt Card
+- Footer
+- -Copyright
+- -Links
+- -Contacts
+- -Address
+
+Two Types of Export/Import
+
+- Default Export
+
+export default component
+import component from path
+
+- Named Export
+
+export const name
+import {name} from path

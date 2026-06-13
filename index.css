@@ -21,7 +21,6 @@
 
 .res-card{
     width: 190px;
-    height: 350px;
     padding: 5px;
     margin: 5px;
 }
@@ -43,4 +42,23 @@
 .res-container{
     display: flex;
     flex-wrap: wrap;
+}
+
+.filter-btn{
+    padding: 5px;
+    margin: 10px;
+}
+
+
+.shimmer-container{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card{
+    height: 400px;
+    width: 200px;
+    background-color: #f0f0f0;
+    margin: 20px
+
 }
