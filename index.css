@@ -11,6 +11,7 @@
 .nav > ul{
     display: flex;
     font-size: 20px;
+    padding: 0 20px;
 }
 
 .nav > ul > li{
@@ -44,8 +45,15 @@
     flex-wrap: wrap;
 }
 
+.filter{
+    display: flex;
+}
+
+.search-input{
+    padding: 2px;
+}
+
 .filter-btn{
-    padding: 5px;
     margin: 10px;
 }
 
@@ -61,4 +69,9 @@
     background-color: #f0f0f0;
     margin: 20px
 
+}
+
+.login{
+    padding: 0 20px;
+    cursor: pointer;
 }

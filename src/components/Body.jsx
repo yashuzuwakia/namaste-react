@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 
 const Body = () => {
   const [resData, setResData] = useState([]);
+  const [searchInputData, setSearchInputData] = useState("");
+  const [filteredRes, setFilteredRes] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -17,34 +19,52 @@ const Body = () => {
     const json = await data.json(data);
 
     setResData(
-      json.data.cards
-        .map((card) => card.card.card.gridElements?.infoWithStyle?.restaurants)
-        .filter((a) => a)
-        .flat(),
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
+    );
+    setFilteredRes(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
     );
   };
 
   const handleFilter = () => {
-    const topRes = resObj.filter((a) => {
+    const topRes = resData.filter((a) => {
       return Number(a.info.avgRating) >= 4.3;
     });
 
-    setResData(topRes);
+    setFilteredRes(topRes);
   };
 
-  if (resData.length === 0) {
-    return <Shimmer />;
-  }
-  return (
+  const handleSearch = async () => {
+    const searchResult = resData.filter((data) => {
+      return data.info.name
+        .toLowerCase()
+        .includes(searchInputData.toLowerCase());
+    });
+
+    setFilteredRes(searchResult);
+  };
+
+  return filteredRes.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
-      {console.log("rendering body")}
       <div className="filter">
+        <div className="search">
+          <input
+            type="search"
+            value={searchInputData}
+            onChange={(e) => setSearchInputData(e.target.value)}
+          />
+          <button onClick={handleSearch}>Search</button>
+        </div>
         <button className="filter-btn" onClick={handleFilter}>
           Top Rated Restraunt
         </button>
       </div>
       <div className="res-container">
-        {resData.map((restraunt) => (
+        {filteredRes.map((restraunt) => (
           <RestrauntCard key={restraunt.info.id} resInfo={restraunt} />
         ))}
       </div>
