@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constant";
 const Header = () => {
   const [buttonName, setButtonName] = useState("Login");
+
+  useEffect(() => {
+    console.log("use Effect called");
+  }, []);
+
   return (
     <div className="header">
       <div className="logo-container">
