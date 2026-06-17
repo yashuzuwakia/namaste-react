@@ -1,4 +1,4 @@
-import RestrauntCard from "./RestrauntCard";
+import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 
@@ -60,12 +60,12 @@ const Body = () => {
           <button onClick={handleSearch}>Search</button>
         </div>
         <button className="filter-btn" onClick={handleFilter}>
-          Top Rated Restraunt
+          Top Rated Restaurant
         </button>
       </div>
       <div className="res-container">
-        {filteredRes.map((restraunt) => (
-          <RestrauntCard key={restraunt.info.id} resInfo={restraunt} />
+        {filteredRes.map((restaurant) => (
+          <RestaurantCard key={restaurant.info.id} resInfo={restaurant} />
         ))}
       </div>
     </div>
