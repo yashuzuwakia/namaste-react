@@ -29,8 +29,8 @@
 - -Logo
 - -Nav
 - Body
-- -Restraunt Container
-- -Restraunt Card
+- -Restaurant Container
+- -Restaurant Card
 - Footer
 - -Copyright
 - -Links
