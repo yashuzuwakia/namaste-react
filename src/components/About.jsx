@@ -2,16 +2,22 @@ import { Component } from "react";
 import UserClass from "./UserClass";
 
 class About extends Component {
-  constructor(props) {
-    super(props);
-    console.log("Parent Constructor");
+  constructor() {
+    super();
   }
 
   componentDidMount() {
-    console.log("Parent componentDidMount");
+    this.timer = setInterval(() => {
+      console.log("Hello");
+    }, 1000);
   }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    console.log("unmount");
+  }
+
   render() {
-    console.log("Parent Render");
     return (
       <div>
         <h1>About</h1>
