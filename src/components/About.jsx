@@ -6,13 +6,12 @@ class About extends Component {
   constructor() {
     super();
   }
-
   render() {
     return (
       <div>
         <h1>About</h1>
         <h2>This is Namastey JS App</h2>
-        <User name={"Yashwant Choudhary (Class)"} location={"Pune"} />
+        <UserClass name={"Yashwant Choudhary (Class)"} location={"Pune"} />
       </div>
     );
   }
