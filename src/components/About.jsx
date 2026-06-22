@@ -1,20 +1,10 @@
 import { Component } from "react";
 import UserClass from "./UserClass";
+import User from "./User";
 
 class About extends Component {
   constructor() {
     super();
-  }
-
-  componentDidMount() {
-    this.timer = setInterval(() => {
-      console.log("Hello");
-    }, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer);
-    console.log("unmount");
   }
 
   render() {
@@ -22,7 +12,7 @@ class About extends Component {
       <div>
         <h1>About</h1>
         <h2>This is Namastey JS App</h2>
-        <UserClass name={"Yashwant Choudhary (Class)"} location={"Pune"} />
+        <User name={"Yashwant Choudhary (Class)"} location={"Pune"} />
       </div>
     );
   }
