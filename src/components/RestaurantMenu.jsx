@@ -2,7 +2,7 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../utils/constant";
-import MenuList from "./MenuList";
+import RestaurantCategory from "./RestaurantCategory";
 
 export default function RestaurantMenu() {
   const { resId } = useParams();
@@ -20,13 +20,12 @@ export default function RestaurantMenu() {
     resData?.cards?.[5].groupedCard?.cardGroupMap?.REGULAR || [];
 
   return (
-    <div>
-      <h1>{name}</h1>
-      <h4>
+    <div className="text-center">
+      <h1 className="font-bold my-6 text-2xl">{name}</h1>
+      <p className="font-bold text-lg">
         {cuisines.join(",")} - {costForTwoMessage}
-      </h4>
-      <h3>Menu</h3>
-      <MenuList cards={cards} />
+      </p>
+      <RestaurantCategory cards={cards} />
     </div>
   );
 }
