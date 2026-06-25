@@ -16,16 +16,21 @@ export default function RestaurantMenu() {
   const { name, cuisines, costForTwoMessage } =
     resData?.cards?.[2]?.card?.card?.info;
 
-  const { cards } =
-    resData?.cards?.[5].groupedCard?.cardGroupMap?.REGULAR || [];
-
+  const categories =
+    resData?.cards?.[5].groupedCard?.cardGroupMap?.REGULAR.cards.filter(
+      (a) =>
+        a.card.card["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory",
+    ) || [];
   return (
     <div className="text-center">
       <h1 className="font-bold my-6 text-2xl">{name}</h1>
       <p className="font-bold text-lg">
         {cuisines.join(",")} - {costForTwoMessage}
       </p>
-      <RestaurantCategory cards={cards} />
+      {categories.map((categorie) => {
+        return <RestaurantCategory data={categorie?.card?.card} />;
+      })}
     </div>
   );
 }
