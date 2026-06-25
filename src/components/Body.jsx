@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withTopRatedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -8,6 +8,8 @@ const Body = () => {
   const [resData, setResData] = useState([]);
   const [searchInputData, setSearchInputData] = useState("");
   const [filteredRes, setFilteredRes] = useState([]);
+
+  const TopRatedRestaurant = withTopRatedLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -56,23 +58,44 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="flex">
+        <div className="search m-4 p-4">
           <input
             type="search"
             value={searchInputData}
+            className="border border-s-black"
             onChange={(e) => setSearchInputData(e.target.value)}
           />
-          <button onClick={handleSearch}>Search</button>
+          <button
+            onClick={handleSearch}
+            className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+          >
+            Search
+          </button>
         </div>
-        <button className="filter-btn" onClick={handleFilter}>
-          Top Rated Restaurant
-        </button>
+        <div className="search m-4 p-4">
+          <button
+            onClick={handleFilter}
+            className="px-4 py-2 bg-gray-300 m-4 rounded-lg"
+          >
+            Top Rated Restaurant
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap justify-center">
         {filteredRes.map((restaurant) => (
-          <Link to={`restaurant/${restaurant.info.id}`}>
-            <RestaurantCard key={restaurant.info.id} resInfo={restaurant} />
+          <Link
+            key={restaurant.info.id}
+            to={`restaurant/${restaurant.info.id}`}
+          >
+            {Number(restaurant.info.avgRating) > 4.3 ? (
+              <TopRatedRestaurant
+                key={restaurant.info.id}
+                resInfo={restaurant}
+              />
+            ) : (
+              <RestaurantCard key={restaurant.info.id} resInfo={restaurant} />
+            )}
           </Link>
         ))}
       </div>
