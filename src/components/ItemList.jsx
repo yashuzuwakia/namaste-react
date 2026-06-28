@@ -21,7 +21,7 @@ const ItemList = ({ items }) => {
               <p className="text-xs">{item.card.info.description}</p>
             </div>
             <div className="w-3/12 flex justify-end">
-              <div className="relative w-[120px] h-[120px] flex-shrink-0">
+              <div className="relative w-30 h-30 shrink-0">
                 {item.card.info.imageId ? (
                   <img
                     className="rounded-xl w-full h-full object-cover shadow-sm"

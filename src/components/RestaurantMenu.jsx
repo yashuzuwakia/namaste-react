@@ -36,7 +36,9 @@ export default function RestaurantMenu() {
             key={categorie?.card?.card?.categoryId}
             data={categorie?.card?.card}
             showItemList={index === showIndex ? true : false}
-            setShowIndex={() => setShowIndex(index)}
+            setShowIndex={() =>
+              index !== showIndex ? setShowIndex(index) : setShowIndex(null)
+            }
           />
         );
       })}
