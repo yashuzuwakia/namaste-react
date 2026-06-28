@@ -3,9 +3,11 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../utils/constant";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 export default function RestaurantMenu() {
   const { resId } = useParams();
+  const [showIndex, setShowIndex] = useState(0);
 
   const resData = useRestaurantMenu(resId);
 
@@ -28,8 +30,15 @@ export default function RestaurantMenu() {
       <p className="font-bold text-lg">
         {cuisines.join(",")} - {costForTwoMessage}
       </p>
-      {categories.map((categorie) => {
-        return <RestaurantCategory data={categorie?.card?.card} />;
+      {categories.map((categorie, index) => {
+        return (
+          <RestaurantCategory
+            key={categorie?.card?.card?.categoryId}
+            data={categorie?.card?.card}
+            showItemList={index === showIndex ? true : false}
+            setShowIndex={() => setShowIndex(index)}
+          />
+        );
       })}
     </div>
   );
