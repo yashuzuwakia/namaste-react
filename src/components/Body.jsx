@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import RestaurantCard, { withTopRatedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/userContext";
 
 const Body = () => {
   const [resData, setResData] = useState([]);
   const [searchInputData, setSearchInputData] = useState("");
   const [filteredRes, setFilteredRes] = useState([]);
+
+  const { setUserName } = useContext(UserContext);
 
   const TopRatedRestaurant = withTopRatedLabel(RestaurantCard);
 
@@ -80,6 +83,16 @@ const Body = () => {
           >
             Top Rated Restaurant
           </button>
+        </div>
+        <div className="search m-4 p-4">
+          <label>Search</label>
+          <input
+            className="border border-s-black"
+            type="text"
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
         </div>
       </div>
       <div className="flex flex-wrap justify-center">
